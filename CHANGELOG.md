@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.18.4-2 (2026-11-16)
+
+- README: Deploy on Railway button for the published template (`osticket-1`). No change to the image or the app.
+
 ## v1.18.4-1 (2026-11-16)
 
 First release of the Railway template.
