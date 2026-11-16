@@ -1,3 +1,5 @@
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/osticket-1?utm_medium=integration&utm_source=button&utm_campaign=osticket)
+
 # osTicket on Railway
 
 Railway template for [osTicket](https://osticket.com), the open-source support ticket system: email and web-form tickets, help topics, SLAs, canned replies, a knowledge base and a customer portal.
