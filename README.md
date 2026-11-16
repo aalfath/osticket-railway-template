@@ -6,7 +6,7 @@ Railway template for [osTicket](https://osticket.com), the open-source support t
 
 | Service | Source | Notes |
 |---|---|---|
-| `osTicket` | this repo (`Dockerfile`) | osTicket **v1.18.4** (official release zip, sha256-checked) on `php:8.4.27-apache-trixie` pinned by digest. Public domain, health check `/healthz.php` |
+| `osTicket` | this repo (`Dockerfile`) | osTicket **v1.18.4** (official release zip, sha256-checked) on `php:8.4.27-apache-trixie` pinned by digest. Public domain, health check `/healthz` |
 | `MySQL` | Railway's MySQL | All osTicket data (tickets, users, attachments, settings) with a volume |
 
 The app container holds no data of its own, so redeploys and updates never lose anything.
@@ -37,7 +37,7 @@ Optional, not in the template: `HELPDESK_NAME` (default `Support Center`), `HELP
 
 - `railway/start.sh` runs `railway/setup.php` before Apache starts. It waits for MySQL, installs osTicket unattended on the first boot with osTicket's own installer (kept outside the web root, so there is no public `/setup` page), writes `include/ost-config.php` from the variables on every boot, and runs `manage.php upgrade` so a new osTicket version's database changes apply by themselves.
 - osTicket's cron (`api/cron.php`: mail fetching, overdue tickets, cleanup) runs every 5 minutes inside the container.
-- `/healthz.php` answers 200 only when the database answers and osTicket is installed.
+- `/healthz` answers 200 only when the database answers and osTicket is installed.
 - Railway terminates HTTPS; osTicket reads `X-Forwarded-Proto` itself.
 
 Plugins and language packs live in the image: fork this repo and add them under `include/plugins` or `include/i18n` with a `COPY` line.
